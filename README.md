@@ -23,9 +23,9 @@ Grunt executes the following tasks:
 - [jshint](https://github.com/gruntjs/grunt-contrib-jshint) to validate javascript code
 - [concat](https://github.com/gruntjs/grunt-contrib-concat) to join javascript files from `app/js` to `dist/my-app.js`
 - [uglisfy](https://github.com/gruntjs/grunt-contrib-uglify) to minify the javascript from `dist/my-app.js` to `dist/my-app.min.js`
-- [node-webkit-builder builder](https://github.com/mllrsohn/grunt-node-webkit-builder) to create our application package.
+- [node-webkit-builder](https://github.com/mllrsohn/grunt-node-webkit-builder) to create our application package.
 
-[node-webkit-builder builder](https://github.com/mllrsohn/grunt-node-webkit-builder) will download a node-webkit package for the defined target platforms (see Gruntfile.js for details).
+[node-webkit-builder](https://github.com/mllrsohn/grunt-node-webkit-builder) will download a node-webkit package for the defined target platforms (see Gruntfile.js for details).
 
 The final app will be built as an executable in the folder `dist-pkg/releases/my-app/<platform-name>/my-app/` .
 
