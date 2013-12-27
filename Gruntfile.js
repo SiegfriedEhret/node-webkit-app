@@ -61,13 +61,13 @@ module.exports = function (grunt) {
         nodewebkit: {
             options: {
                 version: '0.8.3',
-                build_dir: './dist-pkg', // Where the build version of my node-webkit app is saved
-                mac: false, // We want to build it for mac
-                win: true, // We want to build it for win
-                linux32: false, // We don't need linux32
-                linux64: false // We don't need linux64
+                build_dir: './dist-pkg',
+                mac: true,
+                win: true,
+                linux32: true,
+                linux64: true
             },
-            src: ['dist/**/*'] // Your node-wekit app
+            src: ['dist/**/*']
         },
         stylus: {
             compile: {
