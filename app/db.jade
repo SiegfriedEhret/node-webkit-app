@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+    include includes/commons/_head
+    body
+        .pure-g-r
+            .pure-u-1
+                include includes/commons/_header
+            .pure-u-1
+                include includes/commons/_menu
+        .pure-g-r
+            .pure-u-1
+                h2 DB interaction with NeDB
+                p This page contains a test with <a href="https://github.com/louischatriot/nedb">NeDB</a>
+            .pure-u-1#form
+                h3 New dude
+                form.pure-form
+                    fieldset
+                        label(for='firstName') First name
+                            input(id='firstName', name='firstName', placeholder='John', type='text')
+                        label(for='lastName') Last name
+                            input(id='lastName', name='last', placeholder='Doe', type='text')
+                        button.pure-button.pure-button-primary(id='submit', type='submit') Save
+            .pure-u-1#listing
+                h3 Dudes
+                ul#listing
+            script.
+                leDb();
+        .pure-g-r
+            .pure-u-1
+                include includes/commons/_footer
+

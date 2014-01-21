@@ -20,9 +20,8 @@ module.exports = function (grunt) {
                 dest: 'dist/'
             },
             packageinfo: {
-                cwd: 'app/assets/',
-                src: 'package.json',
-                dest: 'dist-pkg/'
+                src: 'app/assets/package.json',
+                dest: 'dist-pkg/package.json'
             }
         },
         cssmin: {
@@ -44,7 +43,8 @@ module.exports = function (grunt) {
                     'dist/index.html': 'app/index.jade',
                     'dist/node.html': 'app/node.jade',
                     'dist/page1.html': 'app/page1.jade',
-                    'dist/page2.html': 'app/page2.jade'
+                    'dist/page2.html': 'app/page2.jade',
+                    'dist/db.html': 'app/db.jade'
                 }
             }
         },
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
             options: {
                 version: '0.8.3',
                 build_dir: './dist-pkg',
-                mac: true,
+                mac: false,
                 win: true,
                 linux32: true,
                 linux64: true

@@ -35,6 +35,7 @@ The demo app shows some stuff:
 
 - A "pages" demo, to show that navigation between pages works
 - A "node" demo, using node modules to list the content of the current directory.
+- A "database" demo, showing how we can save/load stuff from a database using [NeDB](https://github.com/louischatriot/nedb/)
 - More to come !
 
 # License

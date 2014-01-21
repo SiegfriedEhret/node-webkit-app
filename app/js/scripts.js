@@ -21,6 +21,12 @@
     }
 }());
 
+/************************************************************ Show dev tools */
+
+// require('nw.gui').Window.get().showDevTools();
+
+/************************************************************** Node example */
+
 function leNode() {
     var fs = require('fs');
     var listing = document.getElementById('listing');
@@ -37,4 +43,62 @@ function leNode() {
             listing.appendChild(ul);
         }
     });
+}
+
+/**************************************************************** DB example */
+
+function leDb() {
+    var Datastore = require('nedb');
+    var db = new Datastore({
+        filename : getUserDataPath() + '/dudes.db',
+        autoload: true
+    });
+    var listing = document.getElementById('listing');
+
+    getAllTheThings();
+
+    var buttonForm = document.getElementById('submit');
+    buttonForm.addEventListener('click', function() {
+        saveUser(getValueAndClearInput('firstName'), getValueAndClearInput('lastName'));
+    });
+
+    function getValueAndClearInput(id) {
+        var input = document.getElementById(id);
+        var value = input.value;
+        input.setAttribute('value', '');
+        return value;
+    }
+
+    function saveUser(firstName, lastName) {
+        db.insert({
+            firstName: firstName,
+            lastName: lastName
+        }, function(err, newDoc) {
+            if (err) {
+                console.log(err);
+            } else {
+                showUser(newDoc);
+            }
+        });
+    }
+
+    function showUser(dude) {
+        console.log(dude);
+        var li = document.createElement('li');
+        li.innerHTML = dude.firstName + ' ' + dude.lastName;
+        listing.appendChild(li);
+    }
+
+    function getAllTheThings() {
+        db.find({}, function(err, docs) {
+            for (var i = 0; i < docs.length; i++) {
+                showUser(docs[i]);
+            }
+        });
+    }
+}
+
+function getUserDataPath() {
+    var path = require('path');
+    return path.dirname(process.execPath);
 }
