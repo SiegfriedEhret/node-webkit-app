@@ -33,9 +33,10 @@ The final app will be built as an executable in the folder `dist-pkg/releases/my
 
 The demo app shows some stuff:
 
-- A "pages" demo, to show that navigation between pages works
+- A "pages" demo, showing that navigation between pages works
 - A "node" demo, using node modules to list the content of the current directory.
 - A "database" demo, showing how we can save/load stuff from a database using [NeDB](https://github.com/louischatriot/nedb/)
+- A "ftp" demo, allowing to send files to a ftp.
 - More to come !
 
 # License
