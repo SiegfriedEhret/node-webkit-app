@@ -102,3 +102,90 @@ function getUserDataPath() {
     var path = require('path');
     return path.dirname(process.execPath);
 }
+
+/************************************************************** File example */
+
+function leFileUpload() {
+    var files;
+    var listing = document.getElementById('listing');
+    var dropbox = document.getElementById('dropbox');
+    dropbox.addEventListener('dragenter', dragenter, false);
+    dropbox.addEventListener('dragover', dragover, false);
+    dropbox.addEventListener('drop', drop, false);
+
+    function dragenter(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function dragover(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function drop(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        var dt = e.dataTransfer;
+        files = dt.files;
+
+        document.querySelector('.pure-button-disabled').classList.remove('pure-button-disabled');
+
+        dropbox.style.display = 'none';
+
+        var buttonForm = document.getElementById('submitFile');
+        buttonForm.addEventListener('click', sendToFtp);
+    }
+
+
+    function sendToFtp() {
+        var Client = require('ftp');
+        var c = new Client();
+
+        var port = document.getElementById('port').value;
+
+        var options = {
+            host: document.getElementById('server').value,
+            port: port,
+            user: document.getElementById('login').value,
+            password: document.getElementById('password').value,
+            secure: port == 22
+        };
+
+        console.log(options);
+
+        c.on('ready', function() {
+
+            var folder = document.getElementById('folder').value;
+
+            for (var i=0; i<files.length; i++) {
+                var file = files[i];
+                sendFile(c, file.path, folder, file.name);
+            }
+
+        });
+
+        c.connect(options);
+
+    }
+
+    function sendFile(c, path, folder, name) {
+
+        c.put(path, folder + '/' + name, function(err) {
+            if (err) {
+                logFile('upload ' + name + ' ko: ' + err + '<br/>');
+            } else {
+                logFile('upload ' + name + ' ok !<br/>');
+            }
+            c.end();
+        });
+
+
+        function logFile(msg) {
+            var li = document.createElement('li');
+            li.innerHTML = msg;
+            listing.appendChild(li);
+        }
+    }
+}

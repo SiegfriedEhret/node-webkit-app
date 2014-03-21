@@ -1,0 +1,49 @@
+doctype html
+html(lang='en')
+    include includes/commons/_head
+    body
+        .pure-g-r
+            .pure-u-1
+                include includes/commons/_header
+            .pure-u-1
+                include includes/commons/_menu
+        .pure-g-r
+            .pure-u-1
+                h2 File upload
+        .pure-g-r
+            form.pure-form.pure-form-stacked
+                .pure-u-1-2
+                    h3 FTP
+                    .pure-control-group
+                        label(for='server') Server
+                            input(id='server', name='server', placeholder='ftp.mysite.com', type='text')
+                    .pure-control-group
+                        label(for='port') Port
+                            input(id='port', name='port', placeholder='21', type='text')
+                    .pure-control-group
+                        label(for='login') Username
+                            input(id='login', name='login', placeholder='toto2014', type='text')
+                    .pure-control-group
+                        label(for='password') Password
+                            input(id='password', name='password', placeholder='123456', type='password')
+                    .pure-control-group
+                        label(for='folder') Ftp folder
+                            input(id='folder', name='folder', placeholder='/web', type='text')
+                .pure-u-1-2
+                    h3 File
+                    .pure-control-group
+                        div#dropbox Drop a file !
+                    .pure-control-group
+                        input(id='filepath', name='filepath', type='hidden')
+                        input(id='filename', name='filename', type='hidden')
+
+                        a.pure-button.pure-button-primary.pure-button-disabled(id='submitFile', type='submit', href='javascript:void(0);') Send
+        .pure-g-r
+            .pure-u-1
+                ul#listing
+                script.
+                    leFileUpload();
+        .pure-g-r
+            .pure-u-1
+                include includes/commons/_footer
+

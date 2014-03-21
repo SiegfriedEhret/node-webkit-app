@@ -1,6 +1,6 @@
 {
     "name": "my-app",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "main": "index.html",
     "window": {
         "toolbar": false,
@@ -8,6 +8,7 @@
         "height": 600
     },
     "dependencies": {
-        "nedb": "0.9.3"
+        "nedb": "0.9.3",
+        "ftp": "~0.3.6"
     }
 }

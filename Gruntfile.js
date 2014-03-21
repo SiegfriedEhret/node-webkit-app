@@ -44,7 +44,8 @@ module.exports = function (grunt) {
                     'dist/node.html': 'app/node.jade',
                     'dist/page1.html': 'app/page1.jade',
                     'dist/page2.html': 'app/page2.jade',
-                    'dist/db.html': 'app/db.jade'
+                    'dist/db.html': 'app/db.jade',
+                    'dist/file.html': 'app/file.jade'
                 }
             }
         },
