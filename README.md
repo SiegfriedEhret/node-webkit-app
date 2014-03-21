@@ -29,6 +29,10 @@ Grunt executes the following tasks:
 
 The final app will be built as an executable in the folder `dist-pkg/releases/my-app/<platform-name>/my-app/` .
 
+# Remark
+
+If your app doesn't know the libs (nedb, ftp), run `npm install` under the `dist` folder.
+
 # Demos
 
 The demo app shows some stuff:
